@@ -7,6 +7,7 @@ async function getLinks(type: "jzql" | "lldh") {
     link: string;
     type: "jzql" | "lldh";
   }>`select * From Links where type=${type} order by created_at desc`;
+  console.log("rows", rows);
   return rows;
 }
 export default async function Versions({
