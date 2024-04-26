@@ -21,7 +21,7 @@ export default async function Versions({
   const rows = await getLinks(proj as "jzql" | "lldh");
   return (
     <div>
-      <table className="table-auto">
+      <table className="table-fixed max-w-full">
         <thead className="text-gray-700 uppercase bg-gray-50">
           <tr>
             <th>date</th>
@@ -31,10 +31,10 @@ export default async function Versions({
         </thead>
         <tbody>
           {rows?.map((link, index) => (
-            <tr key={index}>
-              <td className="px-2">{link.date}</td>
-              <td className="px-4">
-                <a className="underline text-blue-500" href={link.link}>
+            <tr key={index} className="border-b">
+              <td className="">{link.date}</td>
+              <td className="px-2 py-2 break-all">
+                <a className="underline text-blue-500 w-10" href={link.link}>
                   {link.link}
                 </a>
               </td>
