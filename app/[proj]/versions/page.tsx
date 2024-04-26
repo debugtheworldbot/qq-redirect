@@ -1,7 +1,7 @@
 import React from "react";
 import { sql } from "@vercel/postgres";
 
-export async function getLinks(type: "jzql" | "lldh") {
+async function getLinks(type: "jzql" | "lldh") {
   const { rows } = await sql<{
     date: string;
     link: string;

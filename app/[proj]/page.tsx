@@ -1,7 +1,7 @@
 import { sql } from "@vercel/postgres";
 import { redirect } from "next/navigation";
 
-export async function getLatestLink(type: "jzql" | "lldh") {
+async function getLatestLink(type: "jzql" | "lldh") {
   const { rows } = await sql<{
     date: string;
     link: string;
