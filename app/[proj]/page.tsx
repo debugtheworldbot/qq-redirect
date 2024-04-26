@@ -10,8 +10,10 @@ async function getLatestLink(type: "jzql" | "lldh") {
     type: "jzql" | "lldh";
   }>`select * From Links where type=${type} order by created_at desc limit 1`;
 
+  if (rows.length === 0) {
+    redirect("/");
+  }
   const { link } = rows[0];
-  console.log("link", rows[0]);
   return redirect(link);
 }
 export default async function Page({ params }: { params: { proj: string } }) {
