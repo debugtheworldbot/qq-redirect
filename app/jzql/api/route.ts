@@ -5,6 +5,6 @@ export async function POST(request: Request) {
   console.log("body", body);
   const { date, link, type } = body;
 
-  await sql`INSERT INTO Links (date, link, type) VALUES (${date}, ${link}, ${type})`;
+  await sql`INSERT INTO Links (date, link, type ) VALUES (${date}, ${link}, ${type} )`;
   return new Response("POST OK", { status: 200 });
 }

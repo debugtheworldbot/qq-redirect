@@ -1,13 +1,17 @@
-import React from "react";
+import { sql } from "@vercel/postgres";
+import { redirect } from "next/navigation";
 
-async function getVersionList() { }
+export async function getLatestLink(type: "jzql" | "lldh") {
+  const { rows } = await sql<{
+    date: string;
+    link: string;
+    type: "jzql" | "lldh";
+  }>`select * From Links where type=${type} order by created_at desc limit 1`;
+
+  const { link } = rows[0];
+  console.log("link", rows[0]);
+  return redirect(link);
+}
 export default async function sP() {
-  fetch("/api", {
-    method: "GET",
-    body: JSON.stringify({ url: "111" }),
-    headers: {
-      "content-type": "application/json",
-    },
-  });
-  return <div>sP</div>;
+  await getLatestLink("jzql");
 }
