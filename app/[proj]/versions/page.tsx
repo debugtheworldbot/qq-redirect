@@ -27,8 +27,8 @@ export default async function Versions({
           </tr>
         </thead>
         <tbody>
-          {rows?.map((link) => (
-            <tr key={link.link}>
+          {rows?.map((link, index) => (
+            <tr key={index}>
               <td className="px-2">{link.date}</td>
               <td className="px-4">
                 <a className="underline text-blue-500" href={link.link}>
