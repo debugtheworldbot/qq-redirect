@@ -12,6 +12,7 @@ export async function getLatestLink(type: "jzql" | "lldh") {
   console.log("link", rows[0]);
   return redirect(link);
 }
-export default async function sP() {
-  await getLatestLink("jzql");
+export default async function Page({ params }: { params: { proj: string } }) {
+  const { proj } = params;
+  await getLatestLink(proj as "jzql" | "lldh");
 }

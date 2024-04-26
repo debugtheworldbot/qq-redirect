@@ -9,8 +9,13 @@ export async function getLinks(type: "jzql" | "lldh") {
   }>`select * From Links where type=${type} order by created_at desc`;
   return rows;
 }
-export default async function Versions() {
-  const rows = await getLinks("jzql");
+export default async function Versions({
+  params,
+}: {
+  params: { proj: string };
+}) {
+  const { proj } = params;
+  const rows = await getLinks(proj as "jzql" | "lldh");
   return (
     <div>
       <table className="table-auto">
