@@ -1,7 +1,9 @@
 import { sql } from "@vercel/postgres";
 import { redirect } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getLatestLink(type: "jzql" | "lldh") {
+  noStore();
   const { rows } = await sql<{
     date: string;
     link: string;

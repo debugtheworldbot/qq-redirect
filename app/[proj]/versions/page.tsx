@@ -1,7 +1,9 @@
 import React from "react";
 import { sql } from "@vercel/postgres";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getLinks(type: "jzql" | "lldh") {
+  noStore();
   const { rows } = await sql<{
     date: string;
     link: string;
